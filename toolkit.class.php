@@ -15,13 +15,27 @@
 class Toolkit {
 	function __construct() {
 		// Anything need on initialisation
+		
+		// Uncomment to connect the database
+		//$this->connectDB();
+	}
+
+	function connectDB() {
 		$ra			= $_SERVER['REMOTE_ADDR'];
 		$server 	= ($ra == '::1' ? 'localhost' : 'remote.host');
 		$username 	= ($ra == '::1' ? 'root' : 'username');
 		$password 	= ($ra == '::1' ? 'bitnami' : 'password');
 		$database 	= ($ra == '::1' ? 'database' : 'db_name');
 		
-		$this->db = new mysqli($server, $username, $password, $database) or die('no connection');
+		$this->db = new mysqli($server, $username, $password, $database) or die('no connection');	
+	}
+
+	function updateDB($sql) {
+		// Do something to the database
+		if ($this->db->connect_errno) { echo "Failed to connect to MySQL: (" . $this->db->connect_errno . ") " . $this->db->connect_error; }
+		
+		$response = ($this->db->query($sql) ? TRUE: FALSE);
+		return $response;
 	}
 
 	function cleanInput($input) {
@@ -45,5 +59,20 @@ class Toolkit {
 		
 		// Return the array
 		return $output;
+	}
+	
+	function sendEmail($to,$subject,$message) {
+		/*
+		*	Sends an HTML email
+		*	$to			- email address, csv for multiple addresses
+		*	$subject	- Subject string
+		*	$message	- HTML message
+		*/
+		
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$response = mail($to, $subject, $message, $headers);
+		
+		return $response;
 	}
 }
