@@ -14,7 +14,7 @@
 
 class Toolkit {
 	function __construct() {
-		// Anything need on initialisation
+		// Anything needed on initialisation
 		
 		// Uncomment to connect the database
 		//$this->connectDB();
