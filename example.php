@@ -3,7 +3,7 @@
 include('toolkit.class.php');
 
 // Set the vars
-$to 		= 'rob.dunne@manchester.ac.uk';
+$to 		= 'chupacabra@abracadabra.com';
 $subject	= 'PHP Toolkit example';
 $message	= '<html>
 			   <head>
