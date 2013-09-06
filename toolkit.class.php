@@ -1,6 +1,7 @@
 <?php
 /*
 *	Setupdraw - Rob Dunne
+*	http://setupdraw.com
 *	PHP Toolkit Class
 *	Some commonly needed methods for when a framework is overkill
 *	September 2013 onwards
