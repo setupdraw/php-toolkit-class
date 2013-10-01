@@ -43,18 +43,23 @@ class Toolkit {
 		$output = array();
 		
 		foreach ($input as $key=>$value) {
+			$o = $value;
+			
 			// Make sure it's within the max length for the database
-			$output[$key] = substr($value,0,256);
+			$o = substr($o,0,256);
 			
 			// Tidy up line breaks
-			$output[$key] = preg_replace('/\n{2,}/', "\n\n", $value);
-			$output[$key] = nl2br($value,FALSE);
+			$o = preg_replace('/\n{2,}/', "\n\n", $o);
+			$o = nl2br($o,FALSE);
 		
 			// Strip any odd characters
-			$output[$key] = preg_replace('/[^A-Za-z0-9\. -\!\?\(\)\<\>]/', "", $value);
+			$o = preg_replace('/[^A-Za-z0-9\. -\!\?\(\)\<\>]/', "", $o);
 			
 			// Escape strings
-			$output[$key] = $this->db->escape_string($value);
+			$o = $this->db->escape_string($o);
+			
+			// Put the data back in the array
+			$output[$key] = $o;
 		}
 		
 		// Return the array
