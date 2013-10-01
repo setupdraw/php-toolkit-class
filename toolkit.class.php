@@ -39,7 +39,7 @@ class Toolkit {
 	}
 
 	function cleanInput($input) {
-		// Pass the $_GET or $_POST variable before any database work
+		// Pass the $_GET, $_POST or $_REQUEST array before any database work
 		$output = array();
 		
 		foreach ($input as $key=>$value) {
