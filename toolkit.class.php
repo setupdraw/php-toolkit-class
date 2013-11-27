@@ -21,7 +21,7 @@ class Toolkit {
 	}
 
 	function connectDB() {
-		$ra			= $_SERVER['REMOTE_ADDR'];
+		$ra		= $_SERVER['REMOTE_ADDR'];
 		$server 	= ($ra == '::1' ? 'localhost' : 'remote.host');
 		$username 	= ($ra == '::1' ? 'root' : 'username');
 		$password 	= ($ra == '::1' ? 'bitnami' : 'password');
@@ -69,7 +69,7 @@ class Toolkit {
 	function sendEmail($to,$subject,$message) {
 		/*
 		*	Sends an HTML email
-		*	$to			- email address, csv for multiple addresses
+		*	$to		- email address, csv for multiple addresses
 		*	$subject	- Subject string
 		*	$message	- HTML message
 		*/
