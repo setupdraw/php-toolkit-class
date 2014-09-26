@@ -21,8 +21,5 @@ $message	= '<html>
 $toolkit = new Toolkit;
 $toolkit->sendEmail($to,$subject,$message);
 
-if($toolkit->sendEmail($to,$subject,$message)) {
-	echo 'Mail sent!';
-} else {
-	echo 'Mail fail.';
-}
+$return = ($toolkit->sendEmail($to,$subject,$message)) ? 'Mail sent' : 'Mail fail';
+echo $return;
